@@ -13,7 +13,11 @@ const getContactById = async (contactId) => {
     const contactsId = String(contactId)
     const contacts = await listContacts();
     const result = contacts.find(item => item.id === contactsId)
-    return result || null
+    if (!result) {
+        return null
+    }
+    
+    return result 
 }
 
 const addContact = async (data) => {
